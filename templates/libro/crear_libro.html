@@ -5,9 +5,11 @@
     <title>Registrar libro</title>
 </head>
 <body>
-//busco los campos creados anterior mente para mostrar en el html
+{#busco los campos creados anterior mente para mostrar en el html#}
+{#as_p pintar como parrafo#}
     <form method="POST">
-        {{ autor_form }}
+        {% csrf_token %}
+        {{ libro_form.as_p }}
         <button type = 'submit'>Crear</button>
     </form>
 </body>

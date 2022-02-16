@@ -20,7 +20,7 @@ from apps.libro.views import home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('libro/', include(('apps.libro.urls', 'libro'))),
-    path('home', home, name= 'index')
+    path('home/', home, name= 'index'),
     # path('archivo/',include()),
     # path('', include('apps.urls')),
     # path('accounts/', include('django.contrib.auth.urls')),
