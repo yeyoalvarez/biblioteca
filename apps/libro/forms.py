@@ -1,15 +1,9 @@
 from django import forms
-from .models import autor, libro
-
-
-class AutorForm(forms.ModelForm):
-    class Meta:
-        model = autor
-        fields = ['nombre_completo']
+from .models import libro
 
 
 class libroForm(forms.ModelForm):
     class Meta:
         model = libro
-        fields = ['titulo', 'fecha_impresion', 'editorial', 'coleccion', 'edicion',
+        fields = ['titulo', 'autor','autor2','fecha_impresion', 'editorial', 'coleccion', 'edicion',
                   'isbn', 'lugar_impresion', 'notas']

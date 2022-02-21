@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% if libros %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>Fecha de Impresion</th>
+                    <th>Editorial</th>
+                    <th>Coleccion</th>
+                    <th>Edicion</th>
+                    <th>ISBN</th>
+                    <th>Lugar de Impresion</th>
+                    <th>Notas</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for libro in libros %}
+                    <tr>libro.id</tr>
+                    <tr>libro.titulo</tr>
+                    <tr>libro.autor</tr>
+                    <tr>libro.fecha_impresion</tr>
+                    <tr>libro.editorial</tr>
+                    <tr>libro.coleccion</tr>
+                    <tr>libro.edicion</tr>
+                    <tr>libro.isbn</tr>
+                    <tr>libro.lugar_impresion</tr>
+                    <tr>libro.notas</tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+         <hi>No Existen Registros</hi>
+    {% endif %}
+</body>
+</html>

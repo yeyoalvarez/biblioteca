@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import libroForm
+from .models import libro
 
 # Create your views here.
 def home(request):
@@ -15,3 +16,6 @@ def crearLibro(request):
         libro_form = libroForm()
     return render(request,'libro/crear_libro.html',{'libro_form':libro_form})
 
+def listarLibro(request):
+    libros = libro.objects.all()
+    return  render(request,'libro/listar_libros.html',{'libros':libros})

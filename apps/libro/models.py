@@ -1,31 +1,20 @@
 from django.db import models
 
 # Create your models here.
-class autor(models.Model):
-    id = models.AutoField(primary_key = True)
-    nombre_completo = models.CharField(max_length=250, blank = False, null=False)
 
-#corregir el nombre en el admin y ordenar
-    class Meta:
-        verbose_name = 'autor'
-        verbose_name_plural = 'Autores'
-        ordering = ['nombre_completo']
-
-#devolver el nombre del autor
-    def __str__(self):
-        return self.nombre
 
 class libro(models.Model):
     id = models.AutoField(primary_key=True)
-    titulo = models.CharField('Título', max_length=255, blank=False, null=False)
-    fecha_impresion = models.DateField(blank=False, null=False)
-    editorial = models.CharField(max_length=255, blank=False, null=False)
-    coleccion = models.CharField(max_length=255, null=False)
-    edicion = models.CharField(max_length=255, null=False)
-    isbn = models.CharField(max_length=255, blank=False, null=False)
-    lugar_impresion = models.CharField(max_length=255, blank=False, null=False)
-    notas = models.TextField(null=False)
-    autor_id = models.ManyToManyField(autor)
+    titulo = models.CharField('Título', max_length=100, blank=False, null=False)
+    autor = models.CharField('Autor principal',max_length=100, blank=False, null=False)
+    autor2 = models.CharField('Segundo Autor',max_length=100)
+    fecha_impresion = models.DateField('Fecha de Impresion',blank=False, null=False)
+    editorial = models.CharField(max_length=100, blank=False, null=False)
+    coleccion = models.CharField(max_length=100, null=False)
+    edicion = models.CharField(max_length=100, null=False)
+    isbn = models.CharField(max_length=100, blank=False, null=False)
+    lugar_impresion = models.CharField(max_length=100, blank=False, null=False)
+    notas = models.TextField(max_length=255)
 
     class Meta:
         verbose_name = 'libro'
