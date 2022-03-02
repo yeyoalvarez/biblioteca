@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Registrar libro</title>
-</head>
-<body>
+{% extends 'index.html' %}
+{% block titulo %}
+    Creacion de libros
+{% endblock titulo %}
+
+{% block body %}
+
 {#busco los campos creados anterior mente para mostrar en el html#}
 {#as_p pintar como parrafo#}
     <form method="POST">
@@ -12,5 +12,4 @@
         {{ libro_form.as_p }}
         <button type = 'submit'>Crear</button>
     </form>
-</body>
-</html>
+{% endblock body %}

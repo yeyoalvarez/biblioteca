@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'index.html' %}
+
+{% block titulo %}
+    Lista de Libros
+{% endblock titulo %}
+
+
+{% block body %}
     {% if libros %}
         <table>
             <thead>
@@ -23,21 +24,22 @@
             </thead>
             <tbody>
                 {% for libro in libros %}
-                    <tr>libro.id</tr>
-                    <tr>libro.titulo</tr>
-                    <tr>libro.autor</tr>
-                    <tr>libro.fecha_impresion</tr>
-                    <tr>libro.editorial</tr>
-                    <tr>libro.coleccion</tr>
-                    <tr>libro.edicion</tr>
-                    <tr>libro.isbn</tr>
-                    <tr>libro.lugar_impresion</tr>
-                    <tr>libro.notas</tr>
+                    <tr>
+                        <td>{{ libro.id }}</td>
+                        <td>{{ libro.titulo }}</td>
+                        <td>{{libro.autor}}</td>
+                        <td>{{libro.fecha_impresion}}</td>
+                        <td>{{libro.editorial}}</td>
+                        <td>{{libro.coleccion}}</td>
+                        <td>{{libro.edicion}}</td>
+                        <td>{{libro.isbn}}</td>
+                        <td>{{libro.lugar_impresion}}</td>
+                        <td>{{libro.notas}}</td>
+                    </tr>
                 {% endfor %}
             </tbody>
         </table>
         {% else %}
          <hi>No Existen Registros</hi>
     {% endif %}
-</body>
-</html>
+{% endblock body %}

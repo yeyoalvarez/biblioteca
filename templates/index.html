@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>
@@ -7,11 +7,15 @@
         index de libros
         {% endblock title %}
     </title>
-
+    {% block extracss %}
+    {% endblock extracss %}
 </head>
 <body>
         {% block body %}
-        index de libros
+           <h1>el index y body de mi proyecto</h1>
         {% endblock body %}
+
+        {% block extrajs %}
+        {% endblock extrajs %}
 </body>
 </html>

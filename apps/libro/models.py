@@ -7,14 +7,14 @@ class libro(models.Model):
     id = models.AutoField(primary_key=True)
     titulo = models.CharField('Título', max_length=100, blank=False, null=False)
     autor = models.CharField('Autor principal',max_length=100, blank=False, null=False)
-    autor2 = models.CharField('Segundo Autor',max_length=100)
+    autor2 = models.CharField('Segundo Autor',blank=True,max_length=100)
     fecha_impresion = models.DateField('Fecha de Impresion',blank=False, null=False)
     editorial = models.CharField(max_length=100, blank=False, null=False)
     coleccion = models.CharField(max_length=100, null=False)
     edicion = models.CharField(max_length=100, null=False)
     isbn = models.CharField(max_length=100, blank=False, null=False)
     lugar_impresion = models.CharField(max_length=100, blank=False, null=False)
-    notas = models.TextField(max_length=255)
+    notas = models.TextField(blank=True,max_length=255)
 
     class Meta:
         verbose_name = 'libro'
