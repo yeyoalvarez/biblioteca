@@ -9,7 +9,11 @@
 {#as_p pintar como parrafo#}
     <form method="POST">
         {% csrf_token %}
-        {{ libro_form.as_p }}
-        <button type = 'submit'>Crear</button>
+        {% if error %}
+            <h2>{{ error }}</h2>
+        {% else %}
+            {{ libro_form.as_p }}
+            <button type = 'submit'>Crear</button>
+        {% endif %}
     </form>
 {% endblock body %}

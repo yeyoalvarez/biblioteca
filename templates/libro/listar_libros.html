@@ -4,6 +4,20 @@
     Lista de Libros
 {% endblock titulo %}
 
+{% block buscador %}
+<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+method="POST">
+  {% csrf_token %}
+  <div class="input-group">
+    <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." name="buscar" value="{{ request.POST.buscar }}">
+    <div class="input-group-append">
+      <button class="btn btn-primary" type="submit">
+        <i class="fas fa-search fa-sm"></i>
+      </button>
+    </div>
+  </div>
+</form>
+{% endblock buscador %}
 
 {% block body %}
     {% if libros %}
@@ -20,6 +34,7 @@
                     <th>ISBN</th>
                     <th>Lugar de Impresion</th>
                     <th>Notas</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,6 +50,9 @@
                         <td>{{libro.isbn}}</td>
                         <td>{{libro.lugar_impresion}}</td>
                         <td>{{libro.notas}}</td>
+                        <td>
+                            <a href="{% url 'libro:editar_libro' libro.id %}">Editar</a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
