@@ -1,8 +1,11 @@
 {% extends 'index.html' %}
+{% load static %}  <!-- Este codigo permite acceder a la carpeta static -->
 
 {% block titulo %}
     Lista de Libros
 {% endblock titulo %}
+
+
 
 {% block buscador %}
 <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
@@ -60,4 +63,9 @@ method="POST">
         {% else %}
          <hi>No Existen Registros</hi>
     {% endif %}
+
+   {% block extrajs %}
+  <script src= "{% static 'js/modals/modals.js' %}"></script>
+{% endblock extrajs %}
+
 {% endblock body %}

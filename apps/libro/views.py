@@ -25,7 +25,7 @@ def listarLibro(request):
     if buscar:
         libros = libros.objects.filter(
             Q(titulo_icontains = buscar)
-        ).distinct
+        ).distinct()
 
     return  render(request,'libro/listar_libros.html',{'libros':libros})
 
