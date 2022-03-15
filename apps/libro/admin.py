@@ -7,7 +7,9 @@ from .models import *
 
 class buscadoarLibros(admin.ModelAdmin):
     search_fields = ['titulo', 'autor', 'lugar_impresion']
-    list_display = ['autor', 'edicion', 'coleccion']
+    list_display = ['titulo', 'autor']
 
 admin.site.register(libro, buscadoarLibros)
 admin.site.register(archivo)
+admin.site.register(temas)
+admin.site.register(idioma)
