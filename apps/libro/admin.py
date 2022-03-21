@@ -1,12 +1,23 @@
 from django.contrib import admin
 from .models import *
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
+
 
 # Register your models here.
 # al colocar los modelos aqui luego se ven en el administrador
 #barra de busqueda
 
-class personalizarLibros(admin.ModelAdmin):
-    list_display = ['id','titulo']
+# caracteristicas para importar
+class libroResource(resources.ModelResource):
+    class Meta:
+        model = libro
+        fields = ('signatura')
+
+class personalizarLibros(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ['titulo','id',]
+    # usar las caracteristicas definidas en libroResource
+    resource_class = libroResource
     # ordenar como se vera al cargar
     fieldsets = (
         ( 'Seccion 1',{
@@ -19,7 +30,7 @@ class personalizarLibros(admin.ModelAdmin):
             'notas')
         }),
     )
-    search_fields = ['nombre']
+    search_fields = ['id','titulo','autor__nombre']
     readonly_fields = ['id']
 
 

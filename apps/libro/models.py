@@ -19,6 +19,7 @@ class libro(models.Model):
     signatura = models.CharField(max_length=25, blank=False, null=False)
     titulo = models.CharField('Título', max_length=100, blank=False, null=False)
     autor = models.ManyToManyField('persona')
+    # autor2 = models.ManyToManyField('persona')
     editorial = models.CharField(max_length=100, blank=False, null=False)
     coleccion = models.CharField(max_length=100,blank=True,null=False)
     edicion = models.CharField(max_length=100, blank=True, null=False)
@@ -45,6 +46,7 @@ class archivo(models.Model):
     fecha = models.DateField(blank=False, null=False)
     numero_hojas = models.IntegerField(blank = False, null=False)
     lugar_expedicion = models.CharField(max_length=255, blank=False, null=False)
+    imagen = models.ImageField(upload_to='archivo_imagen', null=True)
 
     class Meta:
         verbose_name = 'archivo'
