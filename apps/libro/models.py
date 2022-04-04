@@ -14,12 +14,10 @@ class persona(models.Model):
 
 class libro(models.Model):
     id = models.AutoField('Registro',primary_key=True)
-    # registro = models.AutoField(blank=False, null=False)
     fecha_carga = models.DateField('Fecha de Carga',blank=False, null=False)
     signatura = models.CharField(max_length=25, blank=False, null=False)
     titulo = models.CharField('Título', max_length=100, blank=False, null=False)
     autor = models.ManyToManyField('persona')
-    # autor2 = models.ManyToManyField('persona')
     editorial = models.CharField(max_length=100, blank=False, null=False)
     coleccion = models.CharField(max_length=100,blank=True,null=False)
     edicion = models.CharField(max_length=100, blank=True, null=False)
@@ -40,18 +38,25 @@ class libro(models.Model):
 
 class archivo(models.Model):
     id = models.AutoField(primary_key=True)
+    nombre_archivo = models.CharField(max_length=25, blank=True, null=False)
     serie = models.CharField(max_length=255, blank=False, null=False)
     subserie = models.CharField(max_length=255, blank=False, null=False)
-    descripcion = models.TextField(blank = False, null=False)
+    descripcion = models.TextField(blank = True, null=False)
     fecha = models.DateField(blank=False, null=False)
     numero_hojas = models.IntegerField(blank = False, null=False)
     lugar_expedicion = models.CharField(max_length=255, blank=False, null=False)
-    imagen = models.ImageField(upload_to='archivo_imagen', null=True)
 
     class Meta:
         verbose_name = 'archivo'
-        verbose_name_plural = 'Archivos'
+        verbose_name_plural = 'Archivo'
         ordering = ['fecha']
+
+    def __str__(self):
+        return self.nombre_archivo
+
+class imagenArchivos(models.Model):
+    imagen = models.ImageField(upload_to='archivo')
+    archivo = models.ForeignKey(archivo, on_delete=models.CASCADE)
 
 class temas(models.Model):
     id = models.AutoField(primary_key=True)

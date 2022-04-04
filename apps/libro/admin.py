@@ -33,13 +33,20 @@ class personalizarLibros(ImportExportModelAdmin, admin.ModelAdmin):
     search_fields = ['id','titulo','autor__nombre']
     readonly_fields = ['id']
 
+class imagenArchivo(admin.TabularInline):
+    model = imagenArchivos
 
-# class ordenarCargaLibros(admin.ModelAdmin):
-#     fields = ['']
+class personalizarArchivos(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ['serie','id','subserie','fecha',]
+    # ordenar como se vera al cargar
+    inlines = [
+        imagenArchivo
+    ]
+
 
 
 admin.site.register(libro, personalizarLibros)
 admin.site.register(persona)
-admin.site.register(archivo)
+admin.site.register(archivo, personalizarArchivos)
 admin.site.register(temas)
 admin.site.register(idioma)
